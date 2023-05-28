@@ -3,6 +3,9 @@
   <div>
     <%= form.label :header %><br>
     <%= form.text_field :header %>
+    <% @question.errors.full_messages_for(:header).each do |message| %>
+      <p style="color: red;"><%= message %></p>
+    <% end %>
   </div>
   <div>
     <%= form.label :body %><br>

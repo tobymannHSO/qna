@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
+  validates :header, presence: true
 end
 
 # == Schema Information
