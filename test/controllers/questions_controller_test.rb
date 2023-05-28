@@ -11,4 +11,11 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     get question_url(question)
     assert_response :success
   end
+
+  test "create has a success response" do
+    assert_difference("Question.count") do
+      params = { question: { body: 'body', header: 'header' } }
+      post questions_url, params: params, as: :json
+    end
+  end
 end
