@@ -1,0 +1,18 @@
+one:
+  header: "What is the capital of Australia?"
+  body: "It's not Sydney or Melbourne!"
+
+two:
+  header: "What is the best BE framework?"
+  body: "I think we all know what the anser will be!"
+
+# == Schema Information
+#
+# Table name: questions
+#
+#  id         :uuid             not null, primary key
+#  body       :text
+#  header     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
