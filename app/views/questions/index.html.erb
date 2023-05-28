@@ -1,1 +1,7 @@
-<h1>This is the questions list</h1>
+<h1>Questions</h1>
+<% @questions.each do |question| %>
+  <section>
+    <h3><%= question.header %></h3>
+    <p><%= question.body %></p>
+  </section>
+<% end %>
