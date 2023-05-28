@@ -5,4 +5,10 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     get questions_url
     assert_response :success
   end
+
+  test "show has a success response" do
+    question = questions(:one)
+    get question_url(question)
+    assert_response :success
+  end
 end
