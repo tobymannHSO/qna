@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  has_many :answers
+
   validates :header, presence: true
 end
 
