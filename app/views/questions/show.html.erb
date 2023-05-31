@@ -1,2 +1,9 @@
 <h1><%= @question.header %></h1>
 <p><%= @question.body %></p>
+<hr/>
+
+<h2>Answers</h2>
+<%= render @question.answers %>
+
+<h2>Add an answer</h2>
+<%= render "answers/form" %>
