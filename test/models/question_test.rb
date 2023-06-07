@@ -12,4 +12,14 @@ class QuestionTest < ActiveSupport::TestCase
     qn.header = "header"
     assert qn.valid?
   end
+
+  test "has_many answers" do
+    qn = questions(:one)
+    assert qn.answers
+  end
+
+  test "answers are destroyed with question" do
+    qn = questions(:one)
+    assert_difference('Answer.count', -1) { qn.destroy }
+  end
 end
