@@ -7,7 +7,9 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create route works' do
-    params = { answer: { body: 'body' } }
-    post @url, params:
+    assert_difference('Answer.count') do
+      params = { answer: { body: 'body' } }
+      post @url, params:
+    end
   end
 end
