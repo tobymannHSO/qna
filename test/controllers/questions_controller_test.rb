@@ -23,6 +23,18 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'update is successful' do
+    question = questions(:one)
+
+    params = {
+      question: {
+        body: 'body', header: 'header', status: 'public'
+      }
+    }
+
+    put question_url(question), params:, as: :json
+  end
+
   test 'delete is successful' do
     assert_difference('Question.count', -1) do
       question = questions(:one)
