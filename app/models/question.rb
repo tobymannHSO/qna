@@ -6,6 +6,8 @@ class Question < ApplicationRecord
   validates :header, presence: true
   validates :status, inclusion: { in: VALID_STATUSES }
 
+  scope :active, -> { where.not(status: 'archived') }
+
   def archived?
     status == 'archived'
   end
