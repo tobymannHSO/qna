@@ -2,8 +2,8 @@ require 'test_helper'
 
 class AnswersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @qn = questions(:one)
-    @url = "/questions/#{@qn.id}/answers"
+    qn = questions(:one)
+    @url = "/questions/#{qn.id}/answers"
   end
 
   test 'create is successful' do
@@ -16,8 +16,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   test 'delete is successful' do
     assert_difference('Answer.count', -1) do
       answer = answers(:one)
-      params = { id: answer.id }
-      delete @url, params:
+      delete "#{@url}/#{answer.id}"
     end
   end
 end
