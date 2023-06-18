@@ -5,6 +5,13 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def delete
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    redirect_to question_path(@question)
+  end
+
   private
 
   def answer_params
