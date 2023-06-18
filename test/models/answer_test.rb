@@ -1,15 +1,16 @@
-require "test_helper"
+require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
-  test "Answer can be created" do
-    qn = questions(:one)
+  test 'test presence of validations' do
+    assert answer_missing('body').invalid?
+    assert answer_missing('status').invalid?
+    assert answer_missing('question_id').invalid?
 
-    an = Answer.new
-    assert an.invalid?
+    assert answers(:one).valid?
+  end
 
-    an.question = qn
-    an.body = "Canberra"
-
-    assert an.valid?
+  def answer_missing(attr)
+    valid_answer = answers(:one)
+    model_missing_attr(Answer, valid_answer, attr)
   end
 end

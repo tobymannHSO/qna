@@ -14,7 +14,11 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'create is successful' do
     assert_difference('Question.count') do
-      params = { question: { body: 'body', header: 'header' } }
+      params = {
+        question: {
+          body: 'body', header: 'header', status: 'public'
+        }
+      }
       post questions_url, params:, as: :json
     end
   end

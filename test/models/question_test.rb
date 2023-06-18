@@ -1,16 +1,11 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  test 'Can be saved' do
-    assert Question.create
-  end
+  test 'test presence of validations' do
+    assert question_missing('header').invalid?
+    assert question_missing('status').invalid?
 
-  test 'validates presence of header' do
-    qn = Question.new
-    assert qn.invalid?
-
-    qn.header = 'header'
-    assert qn.valid?
+    assert answers(:one).valid?
   end
 
   test 'has_many answers' do
@@ -21,5 +16,10 @@ class QuestionTest < ActiveSupport::TestCase
   test 'answers are destroyed with question' do
     qn = questions(:one)
     assert_difference('Answer.count', -1) { qn.destroy }
+  end
+
+  def question_missing(attr)
+    valid_question = questions(:one)
+    model_missing_attr(Question, valid_question, attr)
   end
 end

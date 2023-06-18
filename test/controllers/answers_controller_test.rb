@@ -8,7 +8,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
 
   test 'create is successful' do
     assert_difference('Answer.count') do
-      params = { answer: { body: 'body' } }
+      params = { answer: { body: 'body', status: 'public' } }
       post @url, params:
     end
   end
