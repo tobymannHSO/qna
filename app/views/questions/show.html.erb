@@ -1,9 +1,20 @@
 <h1><%= @question.header %></h1>
 <p><%= @question.body %></p>
+
+<%
+=begin%>
+ <%= link_to "Edit", edit_question_path(@question) %>
+<%
+=end%>
+<%= link_to "Delete", question_path(@question), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
 <hr/>
 
 <h2>Answers</h2>
 <%= render @question.answers.active %>
+<hr/>
 
 <h2>Add an answer</h2>
 <%= render "answers/form" %>

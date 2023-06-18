@@ -1,1 +1,7 @@
-<p><%= answer.body %></p>
+<div class="submit">
+  <%= answer.body %><br>
+  <%= link_to "Delete", [answer.question, answer], data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+</div>
