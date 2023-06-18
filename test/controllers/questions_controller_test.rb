@@ -12,10 +12,17 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'create has a success response' do
+  test 'create is successful' do
     assert_difference('Question.count') do
       params = { question: { body: 'body', header: 'header' } }
       post questions_url, params:, as: :json
+    end
+  end
+
+  test 'delete is successful' do
+    assert_difference('Question.count', -1) do
+      question = questions(:one)
+      delete question_url(question)
     end
   end
 end

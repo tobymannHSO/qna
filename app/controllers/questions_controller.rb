@@ -18,6 +18,11 @@ class QuestionsController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def destroy
+    @question = Question.find(params[:id]).destroy
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
   def question_params
