@@ -1,7 +1,13 @@
+<% status_options = Question::VALID_STATUSES %>
+
 <%= form_with model: [ @question, @question.answers.build ] do |form| %>
-  <p>
-    <%= form.label :answer %>
+  <div>
+    <%= form.label :answer %><br>
     <%= form.text_field :body %>
-  </p>
-  <p><%= form.submit %></p>
+  </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status, status_options, selected: status_options.first %>
+  </div>
+  <div class="submit"><%= form.submit %></div>
 <% end %>
