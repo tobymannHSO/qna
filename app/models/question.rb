@@ -1,16 +1,8 @@
 class Question < ApplicationRecord
-  VALID_STATUSES = %w[public private archived].freeze
+  include StatusAttribute
 
   has_many :answers, dependent: :destroy
-
   validates :header, presence: true
-  validates :status, inclusion: { in: VALID_STATUSES }
-
-  scope :active, -> { where.not(status: 'archived') }
-
-  def archived?
-    status == 'archived'
-  end
 end
 
 # == Schema Information

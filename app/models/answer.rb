@@ -1,14 +1,8 @@
 class Answer < ApplicationRecord
-  VALID_STATUSES = %w[public private archived].freeze
+  include StatusAttribute
 
   belongs_to :question
-
   validates :body, :question, presence: true
-  validates :status, inclusion: { in: VALID_STATUSES }
-
-  def archived?
-    status == 'archived'
-  end
 end
 
 # == Schema Information
