@@ -1,10 +1,12 @@
 one:
-  header: "What is the capital of Australia?"
-  body: "It's not Sydney or Melbourne!"
+  header: 'What is the capital of Australia?'
+  body: 'It is not Sydney or Melbourne!'
+  status: 'public'
 
 two:
-  header: "What is the best BE framework?"
-  body: "I think we all know what the anser will be!"
+  header: 'What is the best BE framework?'
+  body: 'I think we all know what the anser will be!'
+  status: 'public'
 
 # == Schema Information
 #
@@ -13,6 +15,7 @@ two:
 #  id         :uuid             not null, primary key
 #  body       :text
 #  header     :string
+#  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

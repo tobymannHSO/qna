@@ -11,6 +11,7 @@ end
 #  id         :uuid             not null, primary key
 #  body       :text
 #  header     :string
+#  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

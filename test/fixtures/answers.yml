@@ -2,10 +2,12 @@
 
 one:
   body: "Canberra!"
+  status: 'public'
   question: one
 
 two:
   body: "Ruby on Rails!"
+  status: 'public'
   question: two
 
 # == Schema Information
@@ -14,6 +16,7 @@ two:
 #
 #  id          :uuid             not null, primary key
 #  body        :text
+#  status      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  question_id :uuid             not null
