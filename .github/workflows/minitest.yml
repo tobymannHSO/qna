@@ -1,0 +1,52 @@
+name: Run MiniTest
+
+on: [push]
+
+env:
+  RAILS_ENV: test
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+
+jobs:
+  run-minitest:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
+
+      - name: Install dependencies
+        run : |
+          sudo apt-get update && sudo apt-get -yqq install libpq-dev
+          bundle install --jobs 4 --retry 3
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          DISABLE_SPRING: 1
+        run: |
+          cp config/database.ci.yml config/database.yml
+          bundle exec rails db:schema:load
+          bin/rails test
