@@ -1,6 +1,6 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -10,6 +10,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def sign_in_as(user)
+    post(sign_in_url, params: { email: user.email, password: "Secret1*3*5*" }); user
+  end
 
   # Returns an example of the model missing the given attr
   # Initial intention is to easily test validations

@@ -2,11 +2,13 @@ one:
   header: 'What is the capital of Australia?'
   body: 'It is not Sydney or Melbourne!'
   status: 'public'
+  user: lnixon
 
 two:
   header: 'What is the best BE framework?'
   body: 'I think we all know what the anser will be!'
   status: 'public'
+  user: lnixon
 
 # == Schema Information
 #
@@ -18,4 +20,9 @@ two:
 #  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint
+#
+# Indexes
+#
+#  index_questions_on_user_id  (user_id)
 #

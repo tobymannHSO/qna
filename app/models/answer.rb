@@ -1,8 +1,9 @@
 class Answer < ApplicationRecord
   include StatusAttribute
 
+  belongs_to :user
   belongs_to :question
-  validates :body, :question, presence: true
+  validates :body, :question, :user, presence: true
 end
 
 # == Schema Information
@@ -15,10 +16,12 @@ end
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  question_id :uuid             not null
+#  user_id     :bigint
 #
 # Indexes
 #
 #  index_answers_on_question_id  (question_id)
+#  index_answers_on_user_id      (user_id)
 #
 # Foreign Keys
 #
