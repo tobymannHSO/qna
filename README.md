@@ -4,7 +4,7 @@ A basic RoR application that exists purely for the sake of the writer playing ar
 The application is a basic question and answer service. Users can ask and answer questions (currently anonymously), but there is more to come on that front.
 
 ### Running locally
-- Ruby v3.2.0
+- Ruby v3.2.2
 - Rails v7.0.4
 - PostgresQL v14
 
